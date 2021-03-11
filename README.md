@@ -6,7 +6,7 @@
  - .env
  - migration.js
  - seedings.js
- ``` 
+ ```
 
 .env 
 ----
