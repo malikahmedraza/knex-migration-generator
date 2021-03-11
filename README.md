@@ -1,10 +1,12 @@
 # knex-migration-generator
 
 ### To run this project the following is required.
- - 'config' folder with the following files. 
- 1. .env
- 2. migration.js
- 3. seedings.js
+#### 'config' folder with the following files. 
+ ```
+ - .env
+ - migration.js
+ - seedings.js
+ ```
 
 .env 
 ----
