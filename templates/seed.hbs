@@ -1,0 +1,17 @@
+"use strict";
+const path = require('path');
+const fs = require('fs').promises;
+require("dotenv").config({ path: require("app-root-path") + "/.env" });
+const config = require("../config/" + process.env.PROJECT + ".config.js");
+const pointedTable = config.DB_PREFIX + "{{tableNameWithoutPrefix}}";
+
+exports.seed = async function (knex) {
+    await knex(pointedTable).del().then(() => {
+        return knex(pointedTable).then(async () => {
+            const jsonFilePath = path.join(__dirname, './data/{{tableNameWithoutPrefix}}.json');
+            const jsonString = await fs.readFile(jsonFilePath);
+            const jsonObj = JSON.parse(jsonString.toString());
+            return knex(pointedTable).insert(jsonObj);
+        });
+    });
+};

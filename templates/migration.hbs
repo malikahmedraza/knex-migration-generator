@@ -1,0 +1,27 @@
+"use strict";
+require("dotenv").config({ path: require("app-root-path") + "/.env" });
+const config = require("../config/" + process.env.PROJECT + ".config.js");
+const pointedTable = config.DB_PREFIX + "{{tableNameWithoutPrefix}}";
+
+exports.up = async function (knex) {
+    await knex.schema.hasTable(pointedTable).then(function(exists) {
+        if (!exists) {
+            return knex.schema.createTable(pointedTable, table => {
+            {{#if primaryKey includeZero=true}}
+                {{primaryKey}}
+            {{/if}}
+            {{#each columns}}
+                {{this}}
+            {{/each}}
+            {{#each indexes}}
+                {{this}}
+            {{/each}}
+                table.engine("{{engine}}");
+            });
+        }
+    });
+};
+
+exports.down = async function (knex) {
+    return await knex.schema.dropTableIfExists(pointedTable);
+};

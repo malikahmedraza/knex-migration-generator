@@ -1,0 +1,26 @@
+{
+  "name": "generate-files",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migration": "env-cmd -f ./config/.env node src/migrator.js",
+    "seed": "env-cmd -f ./config/.env node src/seeder.js",
+    "knex": "knex"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "@supercharge/promise-pool": "^1.6.0",
+    "fs-extra": "^9.1.0",
+    "handlebars": "^4.7.7",
+    "knex": "^0.21.18",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1"
+  }
+}
