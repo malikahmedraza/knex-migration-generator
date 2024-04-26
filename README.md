@@ -1,4 +1,4 @@
-# knex-migration-generator
+# knex-migration-generator #
 
 ### To run this project the following is required.
 #### 'config' folder with the following files. 
